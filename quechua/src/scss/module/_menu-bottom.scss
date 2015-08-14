@@ -1,0 +1,157 @@
+.menu-bottom {
+  width: 100%;
+  overflow: hidden;
+  display: none;
+  @include padding(20px 0);
+  @include position(absolute, null null 80px 0);
+  @include animation(fadeInMenu 2s cubic-bezier(0.77, 0, 0.175, 1));
+  @include transition(all 0.8s cubic-bezier(0.77, 0, 0.175, 1));
+
+  .menu-bottom__wrapper {
+    position: relative;
+    width: 996px;
+    margin: 0 auto;
+  }
+
+  .menu-bottom__item {
+    float: left;
+    position: relative;
+    @include size(26px);
+    @include transition(all 0.8s cubic-bezier(0.77, 0, 0.175, 1));
+  }
+
+  .menu-bottom__line {
+    float: left;
+    background-color: #fff;
+    @include size(100px 1px);
+    @include position(relative, 13px null null null);
+
+    &:first-of-type {
+      width: 130px;
+
+      &:before {
+        content: '';
+        background-color: #fff;
+        @include position(absolute, null null null -1000px);
+        @include size(1000px 1px);
+      }
+    }
+
+    &:last-of-type {
+      width: 0;
+
+      &:before {
+        content: '';
+        background-color: #fff;
+        @include position(absolute, null null null null);
+        @include size(1000px 1px);
+      }
+    }
+  }
+
+  .menu-bottom__item__link {
+    display: block;
+    position: relative;
+    @include size(100%);
+
+    .menu-bottom__item__link__top-icon {
+      opacity: 0;
+      @include transform(translateY(-15px));
+      @include position(absolute, -8px null null 8px);
+      @include border-width(5px 5px 0 5px);
+      @include border-style(solid solid null solid);
+      @include border-color(#fff transparent transparent transparent);
+      @include transition(all 0.8s cubic-bezier(0.77, 0, 0.175, 1));
+    }
+
+    .menu-bottom__item__link__bottom-text {
+      width: 100px;
+      color: #fff;
+      opacity: 0;
+      font-size: 14px;
+      text-align: center;
+      @include position(absolute, 30px null null -35px);
+      @include transform(translateY(15px));
+      @include transition(all 0.8s cubic-bezier(0.77, 0, 0.175, 1));
+    }
+
+    .menu-bottom__item__link--circle {
+      opacity: 0;
+    }
+
+    &:before {
+      content: '';
+      opacity: 0.5;
+
+    }
+
+    &:before,
+    .menu-bottom__item__link--circle {
+      border: 1px solid #fff;
+      background-color: #fff;
+      border-radius: 50%;
+      @include size(8px);
+      @include position(absolute, 10px null null 9px);
+      @include transition(all 0.8s cubic-bezier(0.77, 0, 0.175, 1));
+    }
+
+    &:after {
+      content: '';
+      border: 1px solid #fff;
+      background-color: transparent;
+      border-radius: 50%;
+      opacity: 0.5;
+      @include size(16px);
+      @include position(absolute, 6px null null 5px);
+      @include transition(all 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955));
+    }
+
+    &:hover {
+
+      &:after {
+        opacity: 0;
+        @include transform(scale(2));
+        @include transition(all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94));
+      }
+
+      &:before {
+        opacity: 0.2;
+        @include transform(scale(3.2));
+      }
+
+      .menu-bottom__item__link--circle {
+        opacity: 1;
+      }
+
+      .menu-bottom__item__link__top-icon {
+        opacity: 1;
+        @include transform(translateX(0));
+      }
+
+      .menu-bottom__item__link__bottom-text {
+        opacity: 1;
+        @include transform(translateX(0));
+      }
+    }
+  }
+}
+
+.active {
+  @include transform(translateY(-150px));
+}
+
+.menu-bottom__item.width {
+  width: 225px;
+}
+
+
+@include keyframes(fadeInMenu) {
+  from{
+    opacity: 0;
+    @include transform(translateY(80px));
+  }
+  to {
+    opacity: 1;
+    @include transform(translateY(0px));
+  }
+}

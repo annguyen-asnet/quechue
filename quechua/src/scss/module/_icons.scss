@@ -1,0 +1,40 @@
+@include font-face("weathericons", "../fonts/weathericons-regular-webfont",  $file-formats: eot woff2 woff svg ttf);
+
+.icon {
+  display: inline-block;
+  font-family: 'weathericons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--day-cloudy {
+
+  &:before {
+    content: '\f002';
+  }
+}
+
+.icon--thermometer {
+
+  &:before {
+    content: '\f055';
+  }
+}
+
+.icon--strong-wind {
+
+  &:before {
+    content: '\f050';
+  }
+}
+
+.icon--raindrops {
+
+  &:before {
+    content: '\f04e';
+    font-size: 30px;
+  }
+}

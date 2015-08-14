@@ -1,0 +1,145 @@
+.main {
+  color: #fff;
+  position: relative;
+  text-align: center;
+  @include size(100% 969px);
+  @include background(url('../images/main.png') center no-repeat);
+  background-size: cover;
+  @include animation(blur 0.8s ease-in);
+
+  .main__block {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+  }
+
+  .main__title {
+    display: none;
+    margin: 0;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+  }
+
+  .main__spring-summer {
+    display: none;
+    font-size: 2.5rem;
+    margin-bottom: 150px;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+  }
+
+  .main__button {
+    display: none;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    position: relative;
+    overflow: hidden;
+    @include padding(17px 90px);
+    @include animation(fadeDown 1s cubic-bezier(.31,.31,.15,1.03));
+
+    &:focus{
+      outline: 0;
+    }
+
+    &:hover {
+
+      .main__button__start {
+        @include transform(translateX(0%));
+
+        &:before {
+          @include transform(translateX(0%));
+        }
+      }
+    }
+  }
+
+  .main__button__start {
+    overflow: hidden;
+    @include size(100%);
+    @include position(absolute, 0 null null 0);
+    @include transform(translateX(-100%));
+    @include transition(all 0.9s cubic-bezier(0.77, 0, 0.175, 1));
+
+    &:before {
+      content: 'Start';
+      width: 100%;
+      background-color: #fff;
+      color: rgba(0,0,0,0.6);
+      @include position(absolute, 0 null null 0);
+      @include padding(17px 90px);
+      @include transform(translateX(100%));
+      @include transition(all 0.9s cubic-bezier(0.77, 0, 0.175, 1));
+    }
+  }
+
+  .main__title,
+  .main__spring-summer {
+    @include animation(fadeUp 1s cubic-bezier(.31,.31,.15,1.03));
+  }
+
+  .main__logo {
+    display: none;
+    width: 145px;
+    @include margin(0 auto 80px auto);
+
+    a {
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      background-color: transparent;
+      @include animation(fadeUp 1.5s cubic-bezier(.31,.31,.15,1.03));
+    }
+
+    &:after {
+      content: '.com';
+      opacity: 0;
+      font-size: 1rem;
+      text-transform: none;
+      @include transition(all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1));
+      @include transform(translateX(10px));
+    }
+
+    &:hover {
+
+      &:after {
+        opacity: 1;
+        @include transform(translateX(0px));
+      }
+    }
+  }
+}
+
+@include keyframes(fadeUp) {
+  from {
+    opacity: 0;
+    @include transform(translateY(50px));
+  }
+  to {
+    opacity: 1;
+    @include transform(translateY(0px));
+  }
+}
+
+@include keyframes(fadeDown) {
+  from {
+    opacity: 0;
+    @include transform(translateY(-50px));
+  }
+  to {
+    opacity: 1;
+    @include transform(translateY(0px));
+  }
+}
+
+@include keyframes(blur) {
+  from {
+    @include filter(blur(10px));
+  }
+  to {
+    @include filter(blur(0px));
+  }
+}
